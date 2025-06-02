@@ -2,11 +2,12 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Gửi em ❤️</title>
   <style>
     body {
       margin: 0;
-      background: linear-gradient(to bottom right, #ff9a9e, #fad0c4);
+      background: linear-gradient(to bottom right, #ffe6e6, #ffccff);
       display: flex;
       flex-direction: column;
       align-items: center;
@@ -15,6 +16,7 @@
       font-family: 'Segoe UI', sans-serif;
       color: #fff;
       text-align: center;
+      overflow: hidden;
     }
 
     .heart {
@@ -51,23 +53,19 @@
     }
 
     @keyframes beat {
-      0%, 100% {
-        transform: rotate(-45deg) scale(1);
-      }
-      50% {
-        transform: rotate(-45deg) scale(1.2);
-      }
+      0%, 100% { transform: rotate(-45deg) scale(1); }
+      50% { transform: rotate(-45deg) scale(1.2); }
     }
 
     h1 {
       font-size: 2.5rem;
-      margin: 20px;
+      color: #ff4d6d;
     }
 
     p {
       font-size: 1.2rem;
+      color: #333;
       max-width: 600px;
-      margin: 0 auto 20px;
     }
 
     .btn-love {
@@ -79,6 +77,7 @@
       border-radius: 30px;
       cursor: pointer;
       transition: background 0.3s;
+      margin-top: 20px;
     }
 
     .btn-love:hover {
@@ -89,6 +88,7 @@
       margin-top: 30px;
       font-size: 1.4rem;
       font-weight: bold;
+      color: #e60073;
       display: none;
       animation: fadeIn 1s ease-in-out forwards;
     }
@@ -100,6 +100,27 @@
 
     audio {
       display: none;
+    }
+
+    /* Pháo hoa */
+    .firework {
+      position: absolute;
+      width: 5px;
+      height: 5px;
+      background: yellow;
+      border-radius: 50%;
+      animation: explode 1s ease-out forwards;
+    }
+
+    @keyframes explode {
+      0% {
+        transform: scale(1);
+        opacity: 1;
+      }
+      100% {
+        transform: scale(8);
+        opacity: 0;
+      }
     }
   </style>
 </head>
@@ -114,20 +135,37 @@
     Cậu có muốn trở thành người đặc biệt nhất trong cuộc đời tớ không?
   </p>
 
-  <button class="btn-love" onclick="showMessage()">Tớ cũng thích cậu ❤️</button>
+  <button class="btn-love" onclick="startLove()">Tớ cũng thích cậu ❤️</button>
 
-  <div id="message">Yayyyy! Từ giờ chúng ta là của nhau nhé 🥰💖</div>
+  <div id="message">Yayyy! Tớ hạnh phúc lắm luôn đó 🥰💖</div>
 
-  <audio autoplay loop>
-    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
-    Trình duyệt của bạn không hỗ trợ phát nhạc.
+  <audio id="love-audio" loop>
+<source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+    Trình duyệt không hỗ trợ nhạc.
   </audio>
 
   <script>
-    function showMessage() {
+    function startLove() {
       document.getElementById("message").style.display = "block";
+      document.getElementById("love-audio").play();
+      launchFireworks();
+    }
+
+    function launchFireworks() {
+      for (let i = 0; i < 30; i++) {
+        const firework = document.createElement("div");
+        firework.className = "firework";
+        firework.style.left = Math.random() * window.innerWidth + "px";
+        firework.style.top = Math.random() * window.innerHeight + "px";
+        firework.style.background = `hsl(${Math.random() * 360}, 100%, 60%)`;
+        document.body.appendChild(firework);
+        setTimeout(() => {
+          firework.remove();
+        }, 1000);
+      }
     }
   </script>
 
 </body>
 </html>
+
