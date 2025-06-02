@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <title>Gửi em ❤️</title>
+  <style>
+    body {
+      margin: 0;
+      background: linear-gradient(to bottom right, #ff9a9e, #fad0c4);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      font-family: 'Segoe UI', sans-serif;
+      color: #fff;
+      text-align: center;
+    }
+
+    .heart {
+      width: 100px;
+      height: 90px;
+      position: relative;
+      margin: 20px auto;
+      animation: beat 1s infinite;
+    }
+
+    .heart::before,
+    .heart::after {
+      content: "";
+      position: absolute;
+      width: 100px;
+      height: 90px;
+      background: red;
+      border-radius: 50%;
+    }
+
+    .heart::before {
+      top: -50px;
+      left: 0;
+    }
+
+    .heart::after {
+      left: 50px;
+      top: 0;
+    }
+
+    .heart {
+      background: red;
+      transform: rotate(-45deg);
+    }
+
+    @keyframes beat {
+      0%, 100% {
+        transform: rotate(-45deg) scale(1);
+      }
+      50% {
+        transform: rotate(-45deg) scale(1.2);
+      }
+    }
+
+    h1 {
+      font-size: 2.5rem;
+      margin: 20px;
+    }
+
+    p {
+      font-size: 1.2rem;
+      max-width: 600px;
+      margin: 0 auto 20px;
+    }
+
+    .btn-love {
+      background-color: #ff4d6d;
+      border: none;
+      padding: 12px 25px;
+      font-size: 1.2rem;
+      color: white;
+      border-radius: 30px;
+      cursor: pointer;
+      transition: background 0.3s;
+    }
+
+    .btn-love:hover {
+      background-color: #e63956;
+    }
+
+    #message {
+      margin-top: 30px;
+      font-size: 1.4rem;
+      font-weight: bold;
+      display: none;
+      animation: fadeIn 1s ease-in-out forwards;
+    }
+
+    @keyframes fadeIn {
+      0% { opacity: 0; transform: scale(0.8);}
+      100% { opacity: 1; transform: scale(1);}
+    }
+
+    audio {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="heart"></div>
+
+  <h1>Gửi đến người tớ yêu nhất ❤️</h1>
+  <p>
+    Tớ đã suy nghĩ rất nhiều... Và tớ chỉ muốn nói rằng: <br>
+    <strong>Tớ thích cậu rất nhiều!</strong> <br>
+    Cậu có muốn trở thành người đặc biệt nhất trong cuộc đời tớ không?
+  </p>
+
+  <button class="btn-love" onclick="showMessage()">Tớ cũng thích cậu ❤️</button>
+
+  <div id="message">Yayyyy! Từ giờ chúng ta là của nhau nhé 🥰💖</div>
+
+  <audio autoplay loop>
+    <source src="https://www.bensound.com/bensound-music/bensound-romantic.mp3" type="audio/mpeg">
+    Trình duyệt của bạn không hỗ trợ phát nhạc.
+  </audio>
+
+  <script>
+    function showMessage() {
+      document.getElementById("message").style.display = "block";
+    }
+  </script>
+
+</body>
+</html>
